@@ -1,5 +1,6 @@
 ---
 layout: default
+categories: [Category Pages Plugin, jekyll]
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
