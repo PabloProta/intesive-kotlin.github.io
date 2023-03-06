@@ -34,3 +34,7 @@ exclude:
    - fixtures/
 
 search_enabled: false
+
+# Theme
+# theme: "just-the-docs"
+remote_theme: pmarsceill/just-the-docs
