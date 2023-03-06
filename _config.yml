@@ -1,5 +1,36 @@
-title: Kotlin Intensive 
-logo: /assets/images/me.jpg
-description: Wanna get more about Kotlin language, this is the right page, checkout the contents.
-google_analytics:
-theme: jekyll-theme-minimal
+
+title: Kotlin Intensive
+email: antoniniprota@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  You wanna get more about kotlin in practice?  This is the right page, checkount the contents.
+# Build settings
+theme: just-the-docs
+plugins:
+  - jekyll-feed
+
+exclude:
+ # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
+   - .sass-cache/
+   - .jekyll-cache/
+   - gemfiles/
+   - Gemfile
+   - Gemfile.lock
+   - node_modules/
+   - vendor/bundle/
+   - vendor/cache/
+   - vendor/gems/
+   - vendor/ruby/
+ # specific to the theme website:
+   - bin/
+   - lib/
+   - "*.gemspec"
+   - "*.gem"
+   - LICENSE.txt
+   - package.json
+   - package-lock.json
+   - Rakefile
+   - README.md
+ # theme test code
+   - fixtures/
+
+search_enabled: false
