@@ -4,9 +4,11 @@ email: antoniniprota@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   You wanna get more about kotlin in practice?  This is the right page, checkount the contents.
 # Build settings
-theme: just-the-docs
 plugins:
   - jekyll-feed
+# Theme
+# theme: "just-the-docs"
+remote_theme: just-the-docs/just-the-docs
 
 exclude:
  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
@@ -34,7 +36,3 @@ exclude:
    - fixtures/
 
 search_enabled: false
-
-# Theme
-# theme: "just-the-docs"
-remote_theme: pmarsceill/just-the-docs
