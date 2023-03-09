@@ -18,7 +18,7 @@ Similarly, in a computer program, data can be stored in various ways depending o
 
 ## Classification of Data Structure:
 
-![](/assets/images/data_structures_classification.png)
+![](https://media.geeksforgeeks.org/wp-content/uploads/20220520182504/ClassificationofDataStructure-660x347.jpg)
 
 In this docs will be explained just the main Data Structures types, so if wanna more kinds check this [site](https://www.geeksforgeeks.org/advanced-data-structures/)
 
