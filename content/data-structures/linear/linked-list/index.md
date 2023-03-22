@@ -125,7 +125,7 @@ class DoublyLinkedList<T> {
                 current = current.next
 
             }
-            tail = current
+            tail = newElement
             newElement.prev = current
             current?.next = newElement
         }
@@ -295,9 +295,9 @@ private class DoublyCircularLinkedList<T> {
                 current = current?.next
             }
 
-            tail = newElement
             newElement.prev = current
             newElement.next = head
+            tail = newElement
             current?.next = newElement
 
         }

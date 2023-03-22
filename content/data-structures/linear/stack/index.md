@@ -92,13 +92,9 @@ class Stack<T> : DoublyLinkedList<T>() {
     fun top() = this.tail
 
     fun pop() {
-        var current = head
-        while (current?.next != tail) {
-            current = current?.next
-        }
-        current = current?.prev
-        tail = current
+        val current = tail?.prev
         current?.next = null
+        tail = current
     }
 
     fun size(): Int {
@@ -126,6 +122,10 @@ fun main() {
 }
 
 {% endhighlight %}
+
+
+### Usages
+
 
 #### REFERENCES:
 [https://www.geeksforgeeks.org/stack-data-structure/](https://www.geeksforgeeks.org/stack-data-structure/)  
