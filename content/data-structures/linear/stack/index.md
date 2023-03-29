@@ -123,10 +123,6 @@ fun main() {
 
 {% endhighlight %}
 
-
-### Usages
-
-
 #### REFERENCES:
 [https://www.geeksforgeeks.org/stack-data-structure/](https://www.geeksforgeeks.org/stack-data-structure/)  
 [https://www.tutorialspoint.com/what-is-postfix-notation](https://www.tutorialspoint.com/what-is-postfix-notation)
