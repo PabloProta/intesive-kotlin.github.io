@@ -72,76 +72,170 @@ package datastructures.tree
 import java.util.*
 
 class Node<T>(var value: T) {
-    var level: Int = 0
     var left: Node<T>? = null
     var right: Node<T>? = null
 }
 
-class BinaryTree<T : Comparable<T>> {
-    private var root: Node<T>? = null
-
+class BinaryTree<T: Comparable<T>> {
+    var root: Node<T>? = null
 
     fun insert(value: T) {
-        val node = Node(value)
-        if (root == null) {
-            root = node
-            root!!.level = 0
+        root = insertRecursive(root, value)
+    }
+
+    private fun insertRecursive(node: Node<T>?, value: T): Node<T> {
+        if (node == null) {
+            return Node(value)
+        }
+
+        if (value < node.value) {
+            node.left = insertRecursive(node.left, value)
+        } else if (value > node.value) {
+            node.right = insertRecursive(node.right, value)
+        }
+
+        return node
+    }
+
+    fun search(value: T): Boolean {
+        return searchRecursive(root, value)
+    }
+
+    private fun searchRecursive(node: Node<T>?, value: T): Boolean {
+        if (node == null) {
+            return false
+        }
+
+        if (value == node.value) {
+            return true
+        }
+
+        return if (value < node.value) {
+            searchRecursive(node.left, value)
         } else {
-            insertNode(root!!, node)
+            searchRecursive(node.right, value)
         }
     }
 
-    /**
-     * This a recursive method that inserts a node in the tree hierarchy.
-     * @param parentNode is the parent of the current node.
-     * @param newNode the node that will be inserted.
-     */
-    private fun insertNode(parentNode: Node<T>, newNode: Node<T>) {
-        /**
-         * this comparison is possible cause the Comparable<T> inheritance
-         * that allow us to compare an object with another.  here, just 
-         * checking if the elementA < elementB. 
-         */
-        if (newNode.value < parentNode.value) {
-            if (parentNode.left == null) {
-                parentNode.left = newNode
-                newNode.level = parentNode.level + 1
-            } else {
-                insertNode(parentNode.left!!, newNode)
-            }
-        } else {
-            if (parentNode.right == null) {
-                parentNode.right = newNode
-                newNode.level = parentNode.level + 1
-            } else {
-                insertNode(parentNode.right!!, newNode)
-            }
+    fun preorderTraversal(): List<T> {
+        val result = mutableListOf<T>()
+        preorderTraversalRecursive(root, result)
+        return result
+    }
+
+    private fun preorderTraversalRecursive(node: Node<T>?, result: MutableList<T>) {
+        if (node != null) {
+            result.add(node.value)
+            preorderTraversalRecursive(node.left, result)
+            preorderTraversalRecursive(node.right, result)
         }
     }
 
-    fun printTreeHierarchy() {
+    fun inorderTraversal(): List<T> {
+        val result = mutableListOf<T>()
+        inorderTraversalRecursive(root, result)
+        return result
+    }
+
+    private fun inorderTraversalRecursive(node: Node<T>?, result: MutableList<T>) {
+        if (node != null) {
+            inorderTraversalRecursive(node.left, result)
+            result.add(node.value)
+            inorderTraversalRecursive(node.right, result)
+        }
+    }
+
+    fun postorderTraversal(): List<T> {
+        val result = mutableListOf<T>()
+        postorderTraversalRecursive(root, result)
+        return result
+    }
+
+    private fun postorderTraversalRecursive(node: Node<T>?, result: MutableList<T>) {
+        if (node != null) {
+            postorderTraversalRecursive(node.left, result)
+            postorderTraversalRecursive(node.right, result)
+            result.add(node.value)
+        }
+    }
+
+    fun printTree() {
         val root = root ?: return
-        val queue = LinkedList<Node<T>>()
-        queue.add(root)
 
-        while (queue.isNotEmpty()) {
-            val size = queue.size
-            var levelNodes = mutableListOf<Node<T>>()
+        val maxLevel = maxLevel(root)
 
-            for (i in 0 until size) {
-                val node = queue.poll()
-                levelNodes.add(node)
+        printNode(Collections.singletonList(root), 1, maxLevel)
+    }
+
+    private fun printNode(nodes: List<Node<T>?>, level: Int, maxLevel: Int) {
+        if (nodes.isEmpty() || nodes.all { it == null }) {
+            return
+        }
+
+        val floor = maxLevel - level
+        val edgeLines = Math.pow(2.0, Math.max(floor - 1, 0).toDouble()).toInt()
+        val firstSpaces = Math.pow(2.0, floor.toDouble()).toInt() - 1
+        val betweenSpaces = Math.pow(2.0, floor + 1.toDouble()).toInt() - 1
+
+        printWhitespaces(firstSpaces)
+
+        val newNodes = mutableListOf<Node<T>?>()
+        for (node in nodes) {
+            if (node != null) {
+                print(node.value)
+                newNodes.add(node.left)
+                newNodes.add(node.right)
+            } else {
+                newNodes.add(null)
+                newNodes.add(null)
+                print(" ")
+            }
+            printWhitespaces(betweenSpaces)
+        }
+        println()
+
+        for (i in 1..edgeLines) {
+            for (node in nodes) {
+                printWhitespaces(firstSpaces - i)
+                if (node == null) {
+                    printWhitespaces(edgeLines + edgeLines + i + 1)
+                    continue
+                }
 
                 if (node.left != null) {
-                    queue.add(node.left!!)
+                    print("/")
+                } else {
+                    printWhitespaces(1)
                 }
+
+                printWhitespaces(i + i - 1)
+
                 if (node.right != null) {
-                    queue.add(node.right!!)
+                    print("\\")
+                } else {
+                    printWhitespaces(1)
                 }
+
+                printWhitespaces(edgeLines + edgeLines - i)
             }
 
-            val line = levelNodes.joinToString(" ") { it.value.toString() }
-            println(line)
+            println()
+        }
+
+        printNode(newNodes, level + 1, maxLevel)
+    }
+
+    private fun printWhitespaces(count: Int) {
+        for (i in 0 until count) {
+            print(" ")
+        }
+    }
+
+    private fun maxLevel(node: Node<T>?): Int {
+        return if (node == null) {
+            0
+        } else {
+            maxOf(maxLevel(node.left), maxLevel(node.right)) + 1
         }
     }
 }
@@ -153,7 +247,7 @@ fun main() {
     tree.insert("apoja")
     tree.insert("cherry")
     tree.insert("date")
-    tree.printTreeHierarchy()
+    tree.printTree()
 }
 ```
 
