@@ -54,6 +54,14 @@ It has no loop and no circuit
 It has no self-loop 
 Its hierarchical model.
 
+## Basic Operation:
+> - Create – create a tree in data structure.
+- Insert − Inserts data in a tree.
+- Search − Searches specific data  in a tree to check it is present or not.
+- Preorder Traversal – perform Traveling a tree in a pre-order manner in data structure .
+-  In order Traversal – perform Traveling a tree in an in-order manner.
+- Post order Traversal –perform Traveling a tree in a post-order manner.
+
 ### Structure:
 
 In this section i will structure just the Binary Tree, for the other ones i suggest you to create one by yourself.
@@ -89,6 +97,11 @@ class BinaryTree<T : Comparable<T>> {
      * @param newNode the node that will be inserted.
      */
     private fun insertNode(parentNode: Node<T>, newNode: Node<T>) {
+        /**
+         * this comparison is possible cause the Comparable<T> inheritance
+         * that allow us to compare an object with another.  here, just 
+         * checking if the elementA < elementB. 
+         */
         if (newNode.value < parentNode.value) {
             if (parentNode.left == null) {
                 parentNode.left = newNode
