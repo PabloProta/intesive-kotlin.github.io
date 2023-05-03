@@ -76,6 +76,7 @@ class Node<T>(var value: T) {
     var right: Node<T>? = null
 }
 
+// TODO - do it better
 class BinaryTree<T: Comparable<T>> {
     var root: Node<T>? = null
 
