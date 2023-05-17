@@ -133,3 +133,8 @@ In this example, we start with a list of people and their ages. We use the filte
 
 ## Wrapping Up
 And there you have it! Kotlin collections may seem daunting at first, but once you get the hang of them, they're a powerful tool that can help you write clean, efficient code. Whether you're working with lists, sets, or maps, Kotlin collections are sure to put a smile on your face. 😊
+
+
+### REFERENCES:
+
+[https://kotlinlang.org/docs/collections-overview.html](https://kotlinlang.org/docs/collections-overview.html)
