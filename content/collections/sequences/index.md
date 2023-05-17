@@ -92,3 +92,7 @@ val totalRevenue = orderTotalSequence.sum()
 And just like that, you've processed a massive amount of data with ease and efficiency, all thanks to our hero Kotlin Sequence. 😎🙌
 
 In summary, Kotlin Sequence is a powerful and efficient tool for working with large collections of data. By using a sequence, you can iterate over each element and only evaluate the data when needed, saving time and resources. Plus, it's a little lazy, but who doesn't love a little bit of laziness every now and then? 😜
+
+### REFERENCES:
+
+[https://kotlinlang.org/docs/sequences.html](https://kotlinlang.org/docs/sequences.html)

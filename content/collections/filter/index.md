@@ -116,3 +116,6 @@ Game on! 🎮✨ We can determine if all numbers are even, if any number is even
 
 ## The Power of Filtering: More Than Meets the Eye
 Filtering isn't just about getting rid of unwanted elements—it's about unleashing the true potential of your data! With Kotlin's filtering prowess, you can transform collections into precisely tailored subsets. It's like sculpting a masterpiece out of clay! 🎨
+
+### REFERENCES: 
+[https://kotlinlang.org/docs/collection-filtering.html](https://kotlinlang.org/docs/collection-filtering.html)
