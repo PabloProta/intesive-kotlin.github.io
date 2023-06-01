@@ -12,11 +12,8 @@ This doc is for who want to do know more about kotlin in practice, here will be 
 
 - Data Structures
 - Collections
-- Generics (Type bounds, Type aliases, Generi and Any)
-- Special contructions / Special classes
-- Exceptions
-- Lambda Expressions
+- Generics (Type bounds, Type aliases, Generic and Any)
+- Special constructor / Special classes (sealed classes, enums....)
+- Functions and Lambda Expressions
 - Concurrency and Paralelism
-- Debugging
-- Regex
 
